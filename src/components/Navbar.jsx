@@ -11,9 +11,10 @@ import Box from "@mui/material/Box";
 // icons
 import { GiHamburgerMenu } from "react-icons/gi";
 
-function Navbar() {
-  const [isDrawerOpened, setDrawerStatus] = React.useState(false);
+// services
 
+function Navbar() {
+  // CSS styles
   const btn = {
     width: "100%",
     height: "50px",
@@ -29,6 +30,9 @@ function Navbar() {
     textDecoration: "none",
     padding: "20px 10px",
   };
+
+  // Hooks
+  const [isDrawerOpened, setDrawerStatus] = React.useState(false);
 
   return (
     <nav className="nav">
@@ -57,7 +61,7 @@ function Navbar() {
               style={btn}
               onClick={() => setDrawerStatus(false)}
             >
-              Home
+              {global.config.i18n.views.sidebar.home}
             </Button>
           </Link>
           <Link to="/spend" style={link}>
@@ -66,7 +70,7 @@ function Navbar() {
               style={btn}
               onClick={() => setDrawerStatus(false)}
             >
-              Spend
+              {global.config.i18n.views.sidebar.spend}
             </Button>
           </Link>
           <Link to="/earn" style={link}>
@@ -75,7 +79,7 @@ function Navbar() {
               style={btn}
               onClick={() => setDrawerStatus(false)}
             >
-              Earn
+              {global.config.i18n.views.sidebar.earn}
             </Button>
           </Link>
         </Box>
