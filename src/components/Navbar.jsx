@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
 
 // icons
 import { GiHamburgerMenu } from "react-icons/gi";
-
-// services
 
 function Navbar() {
   // CSS styles
@@ -31,14 +31,45 @@ function Navbar() {
     padding: "20px 10px",
   };
 
+  //   <Button variant="text" onClick={() => setDrawerStatus(true)}>
+  //   <GiHamburgerMenu color="black" size="2rem" />
+  // </Button>
+
   // Hooks
   const [isDrawerOpened, setDrawerStatus] = React.useState(false);
 
   return (
-    <nav className="nav">
-      <Button variant="text" onClick={() => setDrawerStatus(true)}>
-        <GiHamburgerMenu color="black" size="2rem" />
-      </Button>
+    <nav className="nav" style={{ width: "100%" }}>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <AppBar
+          position="static"
+          sx={{
+            borderRadius: "20px",
+            background: "rgba(255,164,91,1)",
+            marginTop: "1rem",
+          }}
+        >
+          <Toolbar>
+            <Button
+              variant="text"
+              sx={{
+                padding: "2px",
+                minWidth: "0",
+                "&:hover": { background: "#fc8403" },
+              }}
+              onClick={() => setDrawerStatus(true)}
+            >
+              <GiHamburgerMenu color="black" size="2rem" />
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </Box>
       <Drawer
         open={isDrawerOpened}
         onClose={() => setDrawerStatus(false)}
@@ -51,8 +82,7 @@ function Navbar() {
             height: "100vh",
             flexDirection: "column",
             justifyContent: "center",
-            background:
-              "linear-gradient(-90deg, rgba(255,199,91,1) 0%, rgba(255,164,91,1) 100%)",
+            background: "rgba(255,164,91,1)",
           }}
         >
           <Link to="/" style={link}>

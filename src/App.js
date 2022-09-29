@@ -28,7 +28,6 @@ function App() {
             }}
           >
             <Navbar />
-            <div style={{ fontSize: "1.5rem" }}>LOGO</div>
           </Box>
           <Box>
             <Switch>
