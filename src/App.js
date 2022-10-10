@@ -5,6 +5,8 @@ import Earn from "./views/Earn";
 import Navbar from "./components/Navbar";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import BottomNavigation from "@mui/material/BottomNavigation";
 
 function App() {
   return (
@@ -20,15 +22,7 @@ function App() {
     >
       <Container maxWidth="sm">
         <BrowserRouter>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "Center",
-            }}
-          >
-            <Navbar />
-          </Box>
+          <Navbar />
           <Box>
             <Switch>
               <Route exact path="/">
