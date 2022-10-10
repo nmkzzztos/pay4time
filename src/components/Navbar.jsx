@@ -13,33 +13,46 @@ import Toolbar from "@mui/material/Toolbar";
 // icons
 import { GiHamburgerMenu } from "react-icons/gi";
 
-function Navbar() {
-  // CSS styles
-  const btn = {
+// CSS styles
+const style = {
+  btn: {
     width: "100%",
     height: "50px",
     background: "#FEEBDC",
     color: "#25414C",
     fontFamily: "Itim, cursive",
-    fontSize: "1.5rem",
+    fontSize: "1rem",
     borderRadius: "20px",
     margin: "0 auto",
-  };
-
-  const link = {
+  },
+  link: {
     textDecoration: "none",
     padding: "20px 10px",
-  };
+  },
+};
 
-  //   <Button variant="text" onClick={() => setDrawerStatus(true)}>
-  //   <GiHamburgerMenu color="black" size="2rem" />
-  // </Button>
-
+function Navbar() {
   // Hooks
   const [isDrawerOpened, setDrawerStatus] = React.useState(false);
 
+  // data arrays
+  const buttons = [
+    {
+      name: global.i18n.views.sidebar.home,
+      link: "/",
+    },
+    {
+      name: global.i18n.views.sidebar.earn,
+      link: "/earn",
+    },
+    {
+      name: global.i18n.views.sidebar.spend,
+      link: "/spend",
+    },
+  ];
+
   return (
-    <nav className="nav" style={{ width: "100%" }}>
+    <nav className="nav" style={{ width: "100%", marginBottom: "50px" }}>
       <Box
         sx={{
           width: "100%",
@@ -78,40 +91,24 @@ function Navbar() {
         <Box
           sx={{
             display: "flex",
-            width: "10rem",
+            width: "7rem",
             height: "100vh",
             flexDirection: "column",
             justifyContent: "center",
             background: "rgba(255,164,91,1)",
           }}
         >
-          <Link to="/" style={link}>
-            <Button
-              variant="contained"
-              style={btn}
-              onClick={() => setDrawerStatus(false)}
-            >
-              {global.config.i18n.views.sidebar.home}
-            </Button>
-          </Link>
-          <Link to="/spend" style={link}>
-            <Button
-              variant="contained"
-              style={btn}
-              onClick={() => setDrawerStatus(false)}
-            >
-              {global.config.i18n.views.sidebar.spend}
-            </Button>
-          </Link>
-          <Link to="/earn" style={link}>
-            <Button
-              variant="contained"
-              style={btn}
-              onClick={() => setDrawerStatus(false)}
-            >
-              {global.config.i18n.views.sidebar.earn}
-            </Button>
-          </Link>
+          {buttons.map((btn) => (
+            <Link to={btn.link} style={style.link} key={btn.name}>
+              <Button
+                variant="contained"
+                style={style.btn}
+                onClick={() => setDrawerStatus(false)}
+              >
+                {btn.name}
+              </Button>
+            </Link>
+          ))}
         </Box>
       </Drawer>
     </nav>
